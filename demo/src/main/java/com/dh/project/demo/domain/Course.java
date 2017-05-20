@@ -1,19 +1,15 @@
 package com.dh.project.demo.domain;
 
-import java.util.Date;
-
 /**
- * Created by Cristhian on 19/05/2017.
+ * Created by Cristhian on 20/05/2017.
  */
-public class Assignment {
+public class Course {
     private long id;
     private String name;
-    private String className;
 
-    public Assignment(long id, String name, String className) {
+    public Course(long id, String name) {
         this.id = id;
         this.name = name;
-        this.className = className;
     }
 
     public long getId() {
@@ -30,13 +26,5 @@ public class Assignment {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
     }
 }

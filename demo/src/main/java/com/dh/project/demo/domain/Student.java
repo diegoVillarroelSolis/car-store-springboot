@@ -6,7 +6,6 @@ package com.dh.project.demo.domain;
 public class Student {
     private long id;
     private String name;
-    private Assignment assignment;
 
     public Student(long id, String name) {
         this.id = id;
@@ -27,13 +26,5 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Assignment getAssignment() {
-        return assignment;
-    }
-
-    public void setAssignment(Assignment assignment) {
-        this.assignment = assignment;
     }
 }
