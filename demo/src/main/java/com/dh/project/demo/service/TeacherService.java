@@ -18,4 +18,25 @@ public class TeacherService {
         listTeacher.add(new Teacher(1, "Javier"));
         return listTeacher;
     }
+
+    public void addTeacher(Teacher newTeacher){
+        System.out.println("Saving a teacher with name: " + newTeacher.getName());
+        //Connection data base
+    }
+
+    public void getTeacherByID(long id){
+        System.out.println("Getting the teacher with id: " + id);
+    }
+
+    public void updateTeacher(long id, Teacher updatedTeacher){
+        System.out.println("Updating the teacher with name: " + updatedTeacher.getName());
+    }
+
+    public void update(long id, Teacher teacher){
+        System.out.println("Updating the teacher with name: " + teacher.getName());
+    }
+
+    public void deleteTeacher(long id){
+        System.out.println("Deleting the teacher with id: " + id);
+    }
 }
