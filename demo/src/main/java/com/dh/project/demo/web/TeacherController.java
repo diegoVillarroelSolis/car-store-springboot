@@ -18,15 +18,15 @@ public class TeacherController {
 
     @Autowired//Inyeccion de dependencias
     TeacherService teacherService;
-    @RequestMapping(method = RequestMethod.GET  )
 
+    @RequestMapping(method = RequestMethod.GET)
     public List<Teacher> getTeacher(){
         return teacherService.getAllTeachers();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public void getTeacherById(@PathVariable long id){
-        teacherService.getTeacherByID(id);
+    public Teacher getTeacherById(@PathVariable String id){
+        return teacherService.getTeacherByID(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -35,17 +35,17 @@ public class TeacherController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-    public void updateTeacher(@PathVariable long id, @RequestBody Teacher updatedTeacher){
+    public void updateTeacher(@PathVariable String id, @RequestBody Teacher updatedTeacher){
         teacherService.updateTeacher(id, updatedTeacher);
     }
 
     @RequestMapping(method = RequestMethod.PATCH, value = "/{id}")
-    public void update(@PathVariable long id, @RequestBody Teacher teacher){
-        teacherService.update(id, teacher);
+    public void update(@PathVariable String id, @RequestBody Teacher teacher){
+        teacherService.updateTeacher(id, teacher);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public void deleteTeacher(@PathVariable long id){
+    public void deleteTeacher(@PathVariable String id){
         teacherService.deleteTeacher(id);
     }
 }

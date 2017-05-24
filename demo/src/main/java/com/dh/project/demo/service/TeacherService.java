@@ -1,6 +1,8 @@
 package com.dh.project.demo.service;
 
+import com.dh.project.demo.Repository.TeacherRepository;
 import com.dh.project.demo.domain.Teacher;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,32 +13,27 @@ import java.util.List;
  */
 @Service
 public class TeacherService {
+    @Autowired
+    TeacherRepository teacherRepository;
     public List<Teacher> getAllTeachers(){
-        List<Teacher> listTeacher = new ArrayList<>();
-        listTeacher.add(new Teacher(1, "Jhonny"));
-        listTeacher.add(new Teacher(1, "Gabo"));
-        listTeacher.add(new Teacher(1, "Javier"));
-        return listTeacher;
+        return teacherRepository.findAll();
     }
 
     public void addTeacher(Teacher newTeacher){
-        System.out.println("Saving a teacher with name: " + newTeacher.getName());
-        //Connection data base
+        teacherRepository.save(newTeacher);
     }
 
-    public void getTeacherByID(long id){
-        System.out.println("Getting the teacher with id: " + id);
+    public Teacher getTeacherByID(String id){
+        return teacherRepository.findOne(id);
     }
 
-    public void updateTeacher(long id, Teacher updatedTeacher){
-        System.out.println("Updating the teacher with name: " + updatedTeacher.getName());
+    public void updateTeacher(String id, Teacher updatedTeacher){
+        Teacher teacher = teacherRepository.findOne(id);
+        teacher.setName(updatedTeacher.getName());
+        teacherRepository.save(teacher);
     }
 
-    public void update(long id, Teacher teacher){
-        System.out.println("Updating the teacher with name: " + teacher.getName());
-    }
-
-    public void deleteTeacher(long id){
-        System.out.println("Deleting the teacher with id: " + id);
+    public void deleteTeacher(String id){
+        teacherRepository.delete(id);
     }
 }

@@ -25,9 +25,6 @@ public class SwaggerConfig {
                 .build()
                 .apiInfo(apiInfo())
                 .useDefaultResponseMessages(false);
-
-
-
     }
 
     private ApiInfo apiInfo() {
@@ -39,5 +36,4 @@ public class SwaggerConfig {
                 "Apache 2.0",
                 "http");
     }
-
 }
