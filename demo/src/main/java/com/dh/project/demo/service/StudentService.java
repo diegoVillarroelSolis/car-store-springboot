@@ -1,9 +1,11 @@
 package com.dh.project.demo.service;
 
+import com.dh.project.demo.Repository.StudentRepository;
 import com.dh.project.demo.domain.Student;
+import com.dh.project.demo.web.StudentController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,11 +13,37 @@ import java.util.List;
  */
 @Service
 public class StudentService {
+    @Autowired
+    StudentRepository studentRepository;
     public List<Student> getAllStudents(){
-        List<Student> listStudents = new ArrayList<>();
-        listStudents.add(new Student(1, "Juan"));
-        listStudents.add(new Student(1, "Pedro"));
-        listStudents.add(new Student(1, "Rocio"));
-        return listStudents;
+        return studentRepository.findAll();
+    }
+
+//    public void addStudent(StudentController.RequestStudentDTO newStudent){
+//        Student studentDB = new Student();
+//        studentDB.setCi(newStudent.getCi());
+//        studentDB.setName(newStudent.getName());
+//        studentRepository.save(studentDB);
+//    }
+
+    public Student getStudentByID(String id){
+        return studentRepository.findOne(id);
+    }
+
+    public void updateStudent(String id, StudentController.RequestStudentDTO updatedStudent){
+        Student student = studentRepository.findOne(id);
+        student.setName(updatedStudent.getName());
+        studentRepository.save(student);
+    }
+
+    public void deleteStudent(String id){
+        studentRepository.delete(id);
+    }
+
+    public void addStudent(StudentController.RequestStudentDTO newStudentDTO) {
+        Student newStudentDB = new Student();
+        newStudentDB.setName(newStudentDTO.getName());
+        newStudentDB.setCi(newStudentDTO.getCi());
+        studentRepository.save(newStudentDB);
     }
 }

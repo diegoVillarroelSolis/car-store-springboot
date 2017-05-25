@@ -30,22 +30,34 @@ public class TeacherController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void createTeacher(@RequestBody Teacher newTeacher){
+    public void createTeacher(@RequestBody RequestTeacherDTO newTeacher){
         teacherService.addTeacher(newTeacher);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-    public void updateTeacher(@PathVariable String id, @RequestBody Teacher updatedTeacher){
-        teacherService.updateTeacher(id, updatedTeacher);
+    public void updateTeacher(@PathVariable String id, @RequestBody RequestTeacherDTO updatedTeacherDTO){
+        teacherService.updateTeacher(id, updatedTeacherDTO);
     }
 
     @RequestMapping(method = RequestMethod.PATCH, value = "/{id}")
-    public void update(@PathVariable String id, @RequestBody Teacher teacher){
-        teacherService.updateTeacher(id, teacher);
+    public void update(@PathVariable String id, @RequestBody RequestTeacherDTO updatedTeacherDTO){
+        teacherService.updateTeacher(id, updatedTeacherDTO);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public void deleteTeacher(@PathVariable String id){
         teacherService.deleteTeacher(id);
+    }
+
+    public static class RequestTeacherDTO{
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }
