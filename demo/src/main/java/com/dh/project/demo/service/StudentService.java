@@ -42,4 +42,8 @@ public class StudentService {
         newStudentDB.setCodsis(newStudentDTO.getCodsis());
         studentRepository.save(newStudentDB);
     }
+
+    public List<Student> getStudentByName(String name){
+        return studentRepository.findByName(name);
+    }
 }

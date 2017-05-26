@@ -28,6 +28,11 @@ public class StudentController {
         return studentService.getStudentByID(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/search/{name}")
+    public List<Student> getStudentByName(@PathVariable String name){
+        return studentService.getStudentByName(name);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public void createStudent(@RequestBody RequestStudentDTO newTeacher){
          studentService.addStudent(newTeacher);
