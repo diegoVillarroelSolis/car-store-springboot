@@ -19,13 +19,6 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-//    public void addStudent(StudentController.RequestStudentDTO newStudent){
-//        Student studentDB = new Student();
-//        studentDB.setCi(newStudent.getCi());
-//        studentDB.setName(newStudent.getName());
-//        studentRepository.save(studentDB);
-//    }
-
     public Student getStudentByID(String id){
         return studentRepository.findOne(id);
     }
@@ -33,6 +26,8 @@ public class StudentService {
     public void updateStudent(String id, StudentController.RequestStudentDTO updatedStudent){
         Student student = studentRepository.findOne(id);
         student.setName(updatedStudent.getName());
+        student.setCi(updatedStudent.getCi());
+        student.setCodsis(updatedStudent.getCodsis());
         studentRepository.save(student);
     }
 
@@ -44,6 +39,7 @@ public class StudentService {
         Student newStudentDB = new Student();
         newStudentDB.setName(newStudentDTO.getName());
         newStudentDB.setCi(newStudentDTO.getCi());
+        newStudentDB.setCodsis(newStudentDTO.getCodsis());
         studentRepository.save(newStudentDB);
     }
 }

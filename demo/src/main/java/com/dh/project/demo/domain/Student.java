@@ -12,13 +12,15 @@ public class Student {
     private String id;
     private String name;
     private long ci;
+    private long codsis;
 
     public Student(){}
 
-    public Student(String id, String name, long ci) {
+    public Student(String id, String name, long ci, long codsis) {
         this.id = id;
         this.name = name;
         this.ci = ci;
+        this.codsis = codsis;
     }
 
     public String getId() {
@@ -43,5 +45,13 @@ public class Student {
 
     public void setCi(long ci) {
         this.ci = ci;
+    }
+
+    public long getCodsis() {
+        return codsis;
+    }
+
+    public void setCodsis(long codsis) {
+        this.codsis = codsis;
     }
 }

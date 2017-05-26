@@ -51,6 +51,7 @@ public class StudentController {
     public static class RequestStudentDTO{
         private String name;
         private long ci;
+        private long codsis;
 
         public String getName() {
            return name;
@@ -67,5 +68,13 @@ public class StudentController {
         public void setCi(long ci) {
            this.ci = ci;
        }
+
+        public long getCodsis() {
+            return codsis;
+        }
+
+        public void setCodsis(long codsis) {
+            this.codsis = codsis;
+        }
     }
 }
